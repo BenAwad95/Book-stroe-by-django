@@ -8,7 +8,7 @@
 <div id="cart" class="fl-row">
     <a href="admin/" class="btn btn-basic">Login</a>
     {% load static %}
-    <img src="{% static 'media\cart.png' %}" alt="car-icon" id="cart-icon">
+    <a href="{% url 'store:cart' %}"><img src="{% static 'media\cart.png' %}" alt="car-icon" id="cart-icon"></a>
     <span id="cart-total" class="fl-row">1</span>
 </div>
 </nav>

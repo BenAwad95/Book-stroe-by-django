@@ -11,5 +11,4 @@ def cart(request):
     context = {
         'page_title':'Cart'
     }
-
     return render(request,'store\cart.html',context)

@@ -1,0 +1,56 @@
+#cart-container{
+    background-color: inherit;
+}
+
+.row{
+    
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.cart-info {
+    padding:  0 2rem;
+}
+
+.cart-info h4{
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.cart-info .btn-container {
+    float: right;
+}
+
+.cart-info h4:first-child{
+    margin-right: 2rem;
+}
+
+.grid-5{
+    display: grid;
+    grid-template-columns: repeat(2,1fr) repeat(3,0.5fr);
+}
+
+
+
+.col span{
+    display: inline-block;
+    margin: 1rem 0;
+}
+
+.col img{
+    height: 60px;
+}
+.col#quanity{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.arrows{
+    margin-top: -0.3rem;
+}
+.arrows img {
+    height: 10px;
+    margin-bottom: 0.5rem;
+}

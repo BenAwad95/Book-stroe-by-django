@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{page_title|title}}
+{% endblock title %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\store\cart.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <section id="cart-container" class="p-1">
+        <div class="container p-1">
+            <div class="row p-1">
+                <a href="{% url 'store:store' %}" class="btn btn-basic">Continue Shipping</a>
+                <br>
+                <br>
+                <hr>
+                <br>
+                <div class="cart-info">
+                    <h4>Items: <strong id="cart-items">12</strong></h4>
+                    <h4>Total: <strong id="cart-total">$120</strong></h4>
+                    <div class="btn-container">
+                        <a href="" class="btn-sec btn">Checkout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-1 m-2">
+                <section class="grid-5">
+                <div class="col"></div>
+                <div class="col"><h4>Item</h4></div>
+                <div class="col"><h4>Price</h4></div>
+                <div class="col"><h4>Quantity</h4></div>
+                <div class="col"><h4>Total</h4></div>
+           </section>
+           <hr>
+           <section class="grid-5">
+                <div class="col center">
+                {% load static %}
+                    <img class="p-1" src="{% static 'media\2+placeholder.png' %}" alt="product-img">
+                </div>
+                <div class="col"><span id="product-item">producr 1</span></div>
+                <div class="col"><span id="product-price">$44.00</span></div>
+                <div class="col" id="quanity">
+                    <span id="product-quantity">2</span>
+                    <div class="arrows fl-col p-1">
+                        {% load static %}
+                        <a product="" action="add" class="add-item" href="#">
+                            <img src="{% static 'media\3+arrow-up.png' %}" alt="arrow-up"></a>
+                        <a product="" action="remove" class="sub-item" href="#">
+                            <img src="{% static 'media\2+arrow-down.png' %}" alt="arrow-up">
+                        </a>
+                    </div>
+                </div>
+                <div class="col"><span id="product-total">$125</span></div>
+           </section>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
