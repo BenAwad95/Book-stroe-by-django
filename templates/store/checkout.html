@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{page_title|title}}
+{% endblock title %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css\store\checkout.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div id="checkout-container">
+        <div class="container p-1">
+            <div class="row">
+                <div class="col">
+                    <form action="">
+                        <div id="user-info" class="p-1">
+                            <input  placeholder="Name" name='name' type="text">
+                            <input  placeholder="email" type="email" name="email">
+                        </div>
+                        <hr>
+                        <div id="shipping-info" class="p-1">
+                            <input type="text"  name="Contry" placeholder="Contry">
+                            <input type="text"  name="city" placeholder="City">
+                            <input type="text"  name="address" placeholder="Address">
+                            <input type="text"  name="street" placeholder="Street">
+                            <input type="text"  name="zipCode" placeholder="Zip Code">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Contunue">
+                    </form>
+                    <br>
+                    <div class="payment-method p-1 hidden">
+                        <a href="#" class="btn btn-sec">Payment Methods</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-1"><a href="{% url 'store:cart' %}" class="btn btn-basic">Back to cart</a></div>
+                    <hr>
+                    <h2 class="p-1">Order Summary</h2>
+                    <hr>
+                    <div class="grid-4">
+                        <div class="item-img fl-row p-1">
+                            <img src="{% static 'media\2+placeholder.png' %}" alt="product-img">
+                        </div>
+                        <div class="item-name fl-row">
+                            <h4>Product 2</h4>
+                        </div>
+                        <div class="item-price fl-row">
+                            <h4>$124.99</h4>
+                        </div>
+                        <div class="item-quantity fl-row">
+                            <h4>X2</h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="item-info">
+                        <h4>Items: <strong id="cart-items">12</strong></h4>
+                        <h4>Total: <strong id="cart-total">$120</strong></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

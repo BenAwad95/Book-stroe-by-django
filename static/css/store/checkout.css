@@ -1,0 +1,43 @@
+.row{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 1rem;
+}
+
+.col{
+    border: 1px solid #333;
+    border-radius: 5px;
+    height: fit-content;
+}
+
+form input[type='text'],form input[type='email']{
+    padding: 8px;
+    width: 49%;
+    margin-bottom: 0.5rem;
+}
+
+form input[type='submit']{
+    display: block;
+    margin: auto;
+    width: 50%;
+    font-size: 1.3rem;
+}
+
+.grid-4{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr;
+}
+
+.item-img{
+    width: 100%;
+    overflow: hidden;
+
+}
+.item-img img{
+    width: 100%;
+}
+
+.item-info h4{
+    margin-left: 1rem;
+    font-size: 1.3rem;
+}

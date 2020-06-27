@@ -12,3 +12,10 @@ def cart(request):
         'page_title':'Cart'
     }
     return render(request,'store\cart.html',context)
+
+
+def checkout(request):
+    context = {
+        'page-title':'checkout'
+    }
+    return render(request,'store\checkout.html',context)
