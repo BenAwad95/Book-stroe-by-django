@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store | 
+    {% block title %}
+        {% comment %}  {% endcomment %}
+    {% endblock title %}</title>
+    {% block css %}
+        {% comment %}  {% endcomment %}
+    {% endblock css %}
+</head>
+<body>
+    <header>
+        {% include 'partials\navbar.html' %}
+    </header>
+    <main>
+    {% block content %}
+        {% comment %}  {% endcomment %}
+    {% endblock content %}
+    </main>
+    <footer>
+        {% comment %}  {% endcomment %}
+    </footer>
+    {% block js %}
+    {% endblock js %}
+</body>
+</html>
