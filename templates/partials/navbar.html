@@ -1,8 +1,14 @@
 
-<nav id="main-nav">
+<nav id="main-nav" class="fl-row">
 <ul>
-<li><a href="#">Page 1</a></li>
-<li><a href="#">Page 2</a></li>
-<li><a href="#">Page 3</a></li>
+    <li><a class= 'btn btn-dark' href="#">Page 1</a></li>
+    <li><a class= 'btn btn-dark' href="#">Page 2</a></li>
+    <li><a class= 'btn btn-dark' href="#">Page 3</a></li>
 </ul>
+<div id="cart" class="fl-row">
+    <a href="admin/" class="btn btn-basic">Login</a>
+    {% load static %}
+    <img src="{% static 'media\cart.png' %}" alt="car-icon" id="cart-icon">
+    <span id="cart-total" class="fl-row">1</span>
+</div>
 </nav>

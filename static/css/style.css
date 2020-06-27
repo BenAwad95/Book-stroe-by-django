@@ -1,0 +1,146 @@
+:root{
+    --max-width:1200px;
+    --main-color:#f1a112;
+    --sec-color:#55a8f1 ;
+    --dark-color: #333 ;
+    --light-color:#fff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    background-color:var(--light-color);
+    color: var(--dark-color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 1rem 0;
+}
+ul{
+    list-style: none;
+}
+
+
+a{
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+.hidden{
+    display: none;
+}
+
+.p-1{
+    padding: 1rem;
+}
+.p-2{
+    padding: 3rem;
+}
+.p-3{
+    padding: 3rem;
+}
+
+.m-1{
+    margin: 1rem 0;
+}
+.m-2{
+    margin: 3rem 0;
+}
+.m-3{
+    margin: 3rem 0;
+}
+.fl-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fl-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center{
+    text-align: center;
+}
+
+.btn{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: 1px solid var(--dark-color);
+    border-radius: 4px;
+}
+
+.btn-primary{
+    background-color: var(--main-color);
+    color: var(--dark-color);
+}
+
+.btn-sec{
+    background-color: var(--sec-color);
+    color: var(--light-color);
+}
+
+.btn-basic{
+    background-color: inherit;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+}
+
+.btn-basic:hover{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.btn-dark{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+
+
+
+.container{
+    max-width: var(--max-width);
+    margin: auto;
+    overflow: hidden;
+}
+
+#main-nav{
+    max-width: 100%;
+    background: var(--main-color);
+    font-size: 1.2rem;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+}
+
+#main-nav li{
+    display: inline-block;
+}
+
+
+#main-nav #cart{
+    position: relative;
+}
+
+#main-nav #cart #cart-icon{
+    width: 50px;
+    margin: 0 1rem;
+}
+
+#main-nav #cart #cart-total{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    
+}
