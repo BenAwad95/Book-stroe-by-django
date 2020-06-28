@@ -19,8 +19,8 @@
                 <hr>
                 <br>
                 <div class="cart-info">
-                    <h4>Items: <strong id="cart-items">12</strong></h4>
-                    <h4>Total: <strong id="cart-total">$120</strong></h4>
+                    <h4>Items: <strong id="cart-items">{{order.get_items_cart}}</strong></h4>
+                    <h4>Total: <strong id="cart-total">${{order.get_total_cart|floatformat:2}}</strong></h4>
                     <div class="btn-container">
                         <a href="{% url 'store:checkout' %}" class="btn-sec btn">Checkout</a>
                     </div>
@@ -36,27 +36,30 @@
            </section>
            <hr>
            <section class="grid-5">
+                {% for item in order.orderitem_set.all %}
                 <div class="col center">
-                {% load static %}
-                    <img class="p-1" src="{% static 'media\2+placeholder.png' %}" alt="product-img">
+                    <img class="p-1" src="{{item.product.imageURL}}" alt="product-img">
                 </div>
-                <div class="col"><span id="product-item">producr 1</span></div>
-                <div class="col"><span id="product-price">$44.00</span></div>
+                <div class="col fl-row-start"><span id="product-item">{{item.product.name}}</span></div>
+                <div class="col fl-row-start"><span id="product-price">${{item.product.price|floatformat:2}}</span></div>
                 <div class="col" id="quanity">
-                    <span id="product-quantity">2</span>
+                    <span id="product-quantity">{{item.quantity}}</span>
                     <div class="arrows fl-col p-1">
                         {% load static %}
-                        <a product="" action="add" class="add-item" href="#">
-                            <img src="{% static 'media\3+arrow-up.png' %}" alt="arrow-up"></a>
-                        <a product="" action="remove" class="sub-item" href="#">
-                            <img src="{% static 'media\2+arrow-down.png' %}" alt="arrow-up">
-                        </a>
+                            <img class="add-item" productId="{{item.product.id}}" action="add" src="{% static 'media\3+arrow-up.png' %}" alt="arrow-up"></a>
+                            <img class="sub-item" productId="{{item.product.id}}" action="remove"  src="{% static 'media\2+arrow-down.png' %}" alt="arrow-up">
                     </div>
                 </div>
-                <div class="col"><span id="product-total">$125</span></div>
+                <div class="col fl-row-start"><span id="product-total">{{item.get_total}}</span></div>
+                {% endfor %}
            </section>
             </div>
         </div>
     </section>
 {% endblock content %}
+
+{% block js %}
+    {% load static %}
+    <script src="{% static 'js\store\cart.js' %}"></script>
+{% endblock js %}
 

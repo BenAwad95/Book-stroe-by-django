@@ -31,6 +31,10 @@
     grid-template-columns: repeat(2,1fr) repeat(3,0.5fr);
 }
 
+.col {
+    border-bottom: 0.5px solid #888;
+}
+
 
 
 .col span{
@@ -39,14 +43,18 @@
 }
 
 .col img{
-    height: 60px;
+    height: 100px;
 }
 .col#quanity{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
 }
 
+.col.fl-row-start{
+    display: flex;
+    align-items: center;
+}
 .arrows{
     margin-top: -0.3rem;
 }

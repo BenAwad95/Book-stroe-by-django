@@ -24,7 +24,7 @@
                     </h4>
                     <hr>
                     <br>
-                    <a href="" class="btn btn-primary" id="addToCart" action="add" productId="{{book.id}}" style="margin-left:1rem;" >Add To Cart</a>
+                    <button class="btn btn-primary addToCart" action="add" productId="{{book.id}}" style="margin-left:1rem;" >Add To Cart</button>
                     <a href="" class="btn btn-sec">View</a>
                 </div>
             </div>
@@ -35,4 +35,6 @@
 {% endblock content %}
 
 {% block js %}
+    {% load static %}
+    <script src="{% static 'js\store\home.js' %}"></script>
 {% endblock js %}

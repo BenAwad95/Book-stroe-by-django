@@ -25,7 +25,8 @@
     <footer>
         {% comment %}  {% endcomment %}
     </footer>
-    <script src="{% static 'js\sotre\main.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'js\store\main.js' %}"></script>
     {% block js %}
     {% endblock js %}
 </body>

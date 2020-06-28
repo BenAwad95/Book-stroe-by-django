@@ -37,14 +37,14 @@ class Product(models.Model):
 class Order(models.Model):
     customer = models.ForeignKey(Customer,on_delete=models.SET_NULL, null=True)
     complate = models.BooleanField(default=False)
-    order_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    order_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.id)
 
     @property
     def get_total_cart(self):
-        return sum(total.get_total() for total in self.orderitem_set.all())
+        return sum(item.get_total for item in self.orderitem_set.all())
     
     def get_items_cart(self):
         return sum(item.quantity for item in self.orderitem_set.all())
@@ -53,14 +53,16 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL,null=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL,null=True)
-    quantity = models.IntegerField(default = 1)
+    quantity = models.IntegerField(default = 0)
     
     def __str__(self):
         return str(self.order.id)
     
     @property
     def get_total(self):
-        return float(self.product.price * self.quantity)
+        total = self.quantity * self.product.price
+        # print(total)
+        return total
 
     
     

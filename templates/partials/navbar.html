@@ -9,6 +9,6 @@
     <a href="admin/" class="btn btn-basic">Login</a>
     {% load static %}
     <a href="{% url 'store:cart' %}"><img src="{% static 'media\cart.png' %}" alt="car-icon" id="cart-icon"></a>
-    <span id="cart-total" class="fl-row">1</span>
+    <span id="cart-total" class="fl-row">{{order.get_items_cart}}</span>
 </div>
 </nav>
