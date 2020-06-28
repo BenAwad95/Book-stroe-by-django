@@ -12,51 +12,23 @@
 {% block content %}
     <section id="store-container" class="p-1">
         <div class="container grid-3">
+            {% for book in books %}
             <div class="item-box">
                 <div class="img-container fl-row">
-                    {% load static %}
-                    <img src="{% static 'media\2+placeholder.png' %}" alt="item-img">
+                    <img src="{{book.imageURL}}" alt="item-img">
                 </div>
                 <div class="item-info">
-                    <h4 class="item-name">Product 1
-                    <span class="item-price">$12.00</span>
+                    <h4 class="item-name">
+                    <span>{{book.name|title}}</span>
+                    <span class="item-price">${{book.price|floatformat:2}}</span>
                     </h4>
                     <hr>
                     <br>
-                    <a href="#" class="btn btn-primary"style="margin-left:1rem;" >Add To Cart</a>
+                    <a href="" class="btn btn-primary" id="addToCart" action="add" productId="{{book.id}}" style="margin-left:1rem;" >Add To Cart</a>
                     <a href="" class="btn btn-sec">View</a>
                 </div>
             </div>
-            <div class="item-box">
-                <div class="img-container fl-row">
-                    {% load static %}
-                    <img src="{% static 'media\2+placeholder.png' %}" alt="item-img">
-                </div>
-                <div class="item-info">
-                    <h4 class="item-name">Product 1
-                    <span class="item-price">$12.00</span>
-                    </h4>
-                    <hr>
-                    <br>
-                    <a href="#" class="btn btn-primary" style="margin-left:1rem;">Add To Cart</a>
-                    <a href="" class="btn btn-sec">View</a>
-                </div>
-            </div>
-            <div class="item-box">
-                <div class="img-container fl-row">
-                    {% load static %}
-                    <img src="{% static 'media\2+placeholder.png' %}" alt="item-img">
-                </div>
-                <div class="item-info">
-                    <h4 class="item-name">Product 1
-                    <span class="item-price">$12.00</span>
-                    </h4>
-                    <hr>
-                    <br>
-                    <a href="#" class="btn btn-primary" style="margin-left:1rem;">Add To Cart</a>
-                    <a href="" class="btn btn-sec">View</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 

@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from .models import *
 def store(request):
+    books = Product.objects.all()
     context = {
-        'page_title': 'Home Page'
+        'page_title': 'Home Page',
+        'books':books
     }
     return render(request,'store\home.html',context)
 
