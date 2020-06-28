@@ -26,8 +26,11 @@ def cart(request):
 
 
 def checkout(request):
+    customer = request.user.customer
+    order, created = Order.objects.get_or_create(customer=customer, complate=False)
     context = {
-        'page-title':'checkout'
+        'page-title':'checkout',
+        'order':order
     }
     return render(request,'store\checkout.html',context)
 
@@ -49,3 +52,14 @@ def updateItem(request):
     if orderitem.quantity <= 0:
         orderitem.delete()
     return JsonResponse('I faced a big problem here', safe = False)
+
+
+def processOrder(request):
+    data = json.loads(request.body)
+    shippingDetail = data['shippingDetail']
+    customer  = request.user.customer
+    order, created = Order.objects.get_or_create(customer = customer, complate=False)
+    shippingAddress.objects.create(order=order,country=shippingDetail['country'],city=shippingDetail['city'],street=shippingDetail['street'],zipCode=shippingDetail['zipCode'])
+    order.complate = True
+    order.save()
+    return JsonResponse('Payment has been successfully complete!\nThank you for shipping with us', safe= False)

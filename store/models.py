@@ -63,6 +63,18 @@ class OrderItem(models.Model):
         total = self.quantity * self.product.price
         # print(total)
         return total
+    
+
+class shippingAddress(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    country = models.CharField( max_length=50)
+    city = models.CharField( max_length=50)
+    street = models.CharField( max_length=50)
+    zipCode = models.CharField( max_length=50)
+
+    def __str__(self):
+        return str(self.order.id)
+        
 
     
     
