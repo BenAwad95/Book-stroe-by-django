@@ -7,7 +7,12 @@ addBtns.forEach(btn =>{
         let action = e.target.getAttribute('action')
         let productId = e.target.getAttribute('productId')
         // console.log(action,productId)
-        updateCart(action,productId)
+        if(isUserAuthenticated()){
+            updateCart(action,productId)
+        }else{
+            // console.log("You are not logged in!!")
+            addCookieItem(action,productId)
+        }
     })
 })
 
@@ -16,6 +21,12 @@ subBtns.forEach(btn =>{
         let action = e.target.getAttribute('action')
         let productId = e.target.getAttribute('productId')
         // console.log(action,productId)
-        updateCart(action,productId)
+        if(isUserAuthenticated()){
+            updateCart(action,productId)
+        }else{
+            // console.log("You are not logged in!!")
+            addCookieItem(action,productId)
+
+        }
     })
 })

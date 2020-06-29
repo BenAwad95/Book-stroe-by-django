@@ -25,6 +25,9 @@
     <footer>
         {% comment %}  {% endcomment %}
     </footer>
+    <script>
+        const user = '{{user}}'
+    </script>
     {% load static %}
     <script src="{% static 'js\store\main.js' %}"></script>
     {% block js %}

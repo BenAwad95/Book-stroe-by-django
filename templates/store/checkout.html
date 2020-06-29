@@ -16,13 +16,19 @@
                 <div class="col">
                     <form action="" id="payment-form" order="{{ordere}}">
                         <div id="user-info" class="p-1">
+                            <h2 class="p-0">Coustomer Information</h2>
+                            <hr>
+                            <br>
                             <input  placeholder="Name" name='name' type="text">
-                            <input  placeholder="email" type="email" name="email">
+                            <input   placeholder="email" type="email" name="email">
                             <br>
                             <br>
                             <hr>
                         </div>
                         <div id="shipping-info" class="p-1">
+                            <h2 class="p-0">Coustomer Address</h2>
+                            <hr>
+                            <br>
                             <input required type="text"  name="country" placeholder="Contry">
                             <input required type="text"  name="city" placeholder="City">
                             <input required type="text"  name="street" placeholder="Street">
@@ -41,7 +47,7 @@
                     <h2 class="p-1">Order Summary</h2>
                     <hr>
                     <div class="grid-4">
-                        {% for item in order.orderitem_set.all %}
+                        {% for item in items %}
                         <div class="item-img fl-row p-1">
                             <img src="{{item.product.imageURL}}" alt="product-img">
                         </div>
@@ -70,7 +76,6 @@
 
 {% block js %}
     <script>
-        const user = '{{user}}'
         function goHome(){
          window.location.href = "{% url 'store:store' %}"
 }

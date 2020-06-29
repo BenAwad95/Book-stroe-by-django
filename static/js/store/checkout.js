@@ -16,28 +16,37 @@ let shippingDetail = {
 
 }
 
+let userForm = {
+    'name': null,
+    'email': null,
+}
+
+
 let order = {}
 // console.log(user)
 
-if(user != 'AnonymousUser'){
+if(isUserAuthenticated()){
     userInfo.classList.add('hidden')
 }
 
 formCheckout.addEventListener("submit",(e)=>{
     e.preventDefault()
-    console.log("You are order complete")
+    // console.log("You are order complete")
     paymentWindow.classList.remove("hidden")
     shippingDetail.country=formCheckout.country.value
     shippingDetail.city=formCheckout.city.value
     shippingDetail.street=formCheckout.street.value
     shippingDetail.zipCode=formCheckout.zipCode.value
-    order = formCheckout.getAttribute('order')
+    if(!isUserAuthenticated()){
+        userForm.name = formCheckout.name.value
+        userForm.email = formCheckout.email.value
+    }    
 })
 
 payBtn.addEventListener('click',(e)=>{
     e.preventDefault()
     // console.log('payment complete')
-    console.log(shippingDetail)
+    // console.log(shippingDetail)
     fetch('/process-order/',{
         method:'POST',
         headers:{
@@ -46,11 +55,14 @@ payBtn.addEventListener('click',(e)=>{
         },
         body:JSON.stringify({
             'shippingDetail':shippingDetail,
+            'userForm':userForm,
             'order':order
         })
     })
     .then(res =>{return res.json()})
     .then(data => {
+        cart = {}
+        document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/'
         alert(data)
         goHome()
     })
