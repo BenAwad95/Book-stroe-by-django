@@ -1,12 +1,13 @@
 
-<nav id="main-nav" class="fl-row">
+<nav id="main-nav" class="fl-row p-3">
 <ul>
     <li><a class= 'btn btn-dark' href="{% url 'store:store' %}">Store</a></li>
     <li><a class= 'btn btn-dark' href="#">About Us</a></li>
-    <li><a class= 'btn btn-dark' href="#">Contact Us</a></li>
+    <li><a class= 'btn btn-dark' href="#">Contact Us</a></li> 
 </ul>
+<h1 class="p-1" id="logo">Books Store</h1>
 <div id="cart" class="fl-row">
-    <a href="admin/" class="btn btn-basic">Login</a>
+    <a href="/admin" class="btn btn-basic">Login</a>
     {% load static %}
     <a href="{% url 'store:cart' %}"><img src="{% static 'media\cart.png' %}" alt="car-icon" id="cart-icon"></a>
     <span id="cart-total" class="fl-row">{{order.get_items_cart}}</span>
