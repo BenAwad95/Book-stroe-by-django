@@ -4,7 +4,7 @@
     grid-gap: 1rem;
 }
 
-.col{
+.col:last-child{
     border: 1px solid #333;
     border-radius: 5px;
     height: fit-content;
@@ -23,6 +23,14 @@ form input[type='submit']{
     font-size: 1.3rem;
 }
 
+form fieldset {
+    border-radius: 5px;
+    margin-top: -0.7rem;
+}
+
+form fieldset legend {
+    font-size: 1.5rem;
+}
 .grid-4{
     display: grid;
     grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr;

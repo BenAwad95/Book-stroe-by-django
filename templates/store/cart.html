@@ -13,7 +13,13 @@
     <section id="cart-container" class="p-1">
         <div class="container p-1">
             <div class="row p-1">
-                <a href="{% url 'store:store' %}" class="btn btn-basic">Continue Shipping</a>
+                <a href="{% url 'store:store' %}" class="btn btn-basic">
+                    <span class="arrow">
+                        <div class="lineT"></div>
+                        <div class="lineB"></div>
+                    </span>
+                    <span> Continue Shipping</span>
+                </a>
                 <br>
                 <br>
                 <hr>

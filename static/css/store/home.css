@@ -16,6 +16,7 @@
     height: 450px;
     overflow: hidden;
     border: 1px solid #333;
+    border-radius: 5%;
 }
 
 .item-box .img-container{

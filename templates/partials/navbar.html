@@ -7,7 +7,15 @@
 </ul>
 <h1 class="p-1" id="logo">Books Store</h1>
 <div id="cart" class="fl-row">
-    <a href="/admin" class="btn btn-basic">Login</a>
+    {% if user.is_authenticated %}
+        <section>
+            <strong  >Hello <i>{{user.first_name}}</i></strong>
+            <a href="/admin" class="btn btn-basic mx-1 ">
+             My Acount</a>
+        </section>
+    {% else %}
+        <section><a href="/admin" class="btn btn-basic">Login</a><span class="mx-1">Or</span><a href="/admin" class="btn btn-basic">Create Acount</a></section>
+    {% endif %}
     {% load static %}
     <a href="{% url 'store:cart' %}"><img src="{% static 'media\cart.png' %}" alt="car-icon" id="cart-icon"></a>
     <span id="cart-total" class="fl-row">{{order.get_items_cart}}</span>

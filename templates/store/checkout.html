@@ -15,34 +15,35 @@
             <div class="row">
                 <div class="col">
                     <form action="" id="payment-form" order="{{ordere}}">
-                        <div id="user-info" class="p-1">
-                            <h2 class="p-0">Coustomer Information</h2>
-                            <hr>
-                            <br>
+                        <fieldset id="user-info" class="p-1">
+                            <legend class="p-0">Coustomer Information</legend>
+                            
                             <input  placeholder="Name" name='name' type="text">
                             <input   placeholder="email" type="email" name="email">
-                            <br>
-                            <br>
-                            <hr>
-                        </div>
-                        <div id="shipping-info" class="p-1">
-                            <h2 class="p-0">Coustomer Address</h2>
-                            <hr>
-                            <br>
+                           
+                        </fieldset>
+                        <fieldset id="shipping-info" class="p-1 m-1">
+                            <legend class="p-0">Coustomer Address</legend>
+                            
                             <input required type="text"  name="country" placeholder="Contry">
                             <input required type="text"  name="city" placeholder="City">
                             <input required type="text"  name="street" placeholder="Street">
                             <input required type="text"  name="zipCode" placeholder="Zip Code">
-                        </div>
+                        </fieldset>
                         <input type="submit" class="btn btn-primary" value="Contunue">
                     </form>
-                    <br>
                     <div id="payment-window" class="payment-method p-1 hidden">
                         <a id="pay-btn" href="#" class="btn btn-sec">Payment Methods</a>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="p-1"><a href="{% url 'store:cart' %}" class="btn btn-basic">Back to cart</a></div>
+                    <div class="p-1"><a href="{% url 'store:cart' %}" class="btn btn-basic">
+                        <span class="arrow">
+                        <div class="lineT"></div>
+                        <div class="lineB"></div>
+                    </span>
+                    <span> Back To Cart</span>
+                    </a></div>
                     <hr>
                     <h2 class="p-1">Order Summary</h2>
                     <hr>
