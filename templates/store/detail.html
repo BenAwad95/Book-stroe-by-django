@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{page_title|title}}
+{% endblock title %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css\store\detail.css' %}">
+{% endblock css %}
+
+{% block content %}
+    
+    <a href="{% url 'store:store' %}" class="detail btn btn-basic">
+        <span class="arrow">
+            <div class="lineT"></div>
+            <div class="lineB"></div>
+        </span>
+        <span> Back To Store</span>
+    </a>
+    <article id="book-detail" class="container p-1 m-1">
+        <section class="img-container fl-row p-1">
+            <img src="{{book.imageURL}}" alt="{{book.name|title}} book cover">
+        </section>
+        <section class="book-detail p-1">
+            <h2 class="center">{{book.name|title}}</h2>
+            {% if biggerText %}
+            <div class="p-container"   style="overflow-y: scroll;">
+                <p id="book-prife" class="p-1">
+                      {{book.brief}}
+                </p>
+            </div>
+            {% else %}
+            <div class="p-container">
+                <p id="book-prife" class="p-1">
+                      {{book.brief}}
+                </p>
+            </div>
+            {% endif %}
+        </section>
+        <section class="options-control p-1">
+            <button class="btn btn-sec">Add To Cart</button>
+            <button class="btn btn-sec">Add To Wishes</button>
+        </section>
+    </article>
+{% endblock content %}
+
+{% block js %}
+{% load static %}
+{% comment %} <script src="{% static 'js\store\detail.js' %}"></script> {% endcomment %}
+{% endblock js %}
