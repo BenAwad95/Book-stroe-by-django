@@ -175,7 +175,39 @@ a{
     color: var(--dark-color);
 }
 
+.btn:hover .arrow {
+    background-color: var(--light-color);
+}
 
+.arrow{
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 2px;
+    background-color: var(--dark-color);
+    transform: translateY(-150%);
+    margin-right: 0.3rem;
+}
+
+.lineT{
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    top: 0;
+    left: 0;
+    transform: rotate(-45deg) translateY(-5px) translateX(2px);
+    background-color: inherit;
+}
+
+.lineB{
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    top: 0;
+    left: 0;
+    transform: rotate(45deg) translateY(5px) translateX(2px);
+    background-color: inherit;
+}
 
 
 .container{
@@ -278,3 +310,4 @@ a{
 .social-box:hover{
     transform: scale(1.1);
 }
+
