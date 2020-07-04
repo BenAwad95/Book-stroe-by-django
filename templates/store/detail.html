@@ -11,7 +11,7 @@
 
 {% block content %}
     
-    <a href="{% url 'store:store' %}" class="detail btn btn-basic">
+    <a href="{% url 'store:store' %}" id="back-home-btn" class="btn btn-basic">
         <span class="arrow">
             <div class="lineT"></div>
             <div class="lineB"></div>
@@ -38,14 +38,21 @@
             </div>
             {% endif %}
         </section>
-        <section class="options-control p-1">
-            <button class="btn btn-sec">Add To Cart</button>
-            <button class="btn btn-sec">Add To Wishes</button>
+        <section class="options-control p-1 fl-row">
+            <button id="addToCart" productId="{{book.id}}" action="add" class="btn btn-primary fl-row">
+                <span>Add To Cart</span>
+                {% load static %}
+                <img src="{% static 'media/cart.png' %}" alt="">
+            </button>
+            <button class="btn btn-dark fl-row">
+                <span>Add To Wish</span>
+                <div class="heart"></div>
+            </button>
         </section>
     </article>
 {% endblock content %}
 
 {% block js %}
-{% load static %}
-{% comment %} <script src="{% static 'js\store\detail.js' %}"></script> {% endcomment %}
+
+<script src="{% static 'js/store/detail.js' %}"></script>
 {% endblock js %}

@@ -3,8 +3,15 @@ const addItemBtns = document.querySelectorAll('.addToCart')
 
 addItemBtns.forEach(btn =>{
     btn.addEventListener('click',(e)=>{
-        let action = e.target.getAttribute('action')
-        let productId = e.target.getAttribute('productId')
+        let action, productId;
+        if(e.target.classList.contains('btn')){
+            action = e.target.getAttribute('action')
+            productId = e.target.getAttribute('productId')
+        }else{
+            action = e.target.parentElement.getAttribute('action')
+            productId = e.target.parentElement.getAttribute('productId')
+        }
+        // console.log(productId,action)        
         if(isUserAuthenticated()){
             updateCart(action,productId)
         }else{

@@ -24,8 +24,14 @@
                     </h4>
                     <hr>
                     <br>
-                    <button class="btn btn-primary addToCart" action="add" productId="{{book.id}}" style="margin-left:1rem;" >Add To Cart</button>
-                    <a href="{% url 'store:bookDetail' book.name %}" class="btn btn-sec">View</a>
+                    <section class="fl-row-start">
+                        <button class="btn btn-primary addToCart fl-row" action="add" productId="{{book.id}}" style="margin-left:1rem;" >
+                            <span>Add To Cart</span>
+                        {% load static %}
+                            <img src="{% static 'media/cart.png' %}" alt="car-icon">
+                        </button>
+                        <a href="{% url 'store:bookDetail' book.name %}" class="btn btn-sec">View</a>
+                    </section>
                 </div>
             </div>
             {% endfor %}

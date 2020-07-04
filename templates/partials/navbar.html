@@ -5,7 +5,7 @@
     <li><a class= 'btn btn-dark' href="#">About Us</a></li>
     <li><a class= 'btn btn-dark' href="#">Contact Us</a></li> 
 </ul>
-<h1 class="p-1" id="logo">Books Store</h1>
+<a href="{% url 'store:store' %}"><h1 class="p-1" id="logo">Books Store</h1></a>
 <div id="cart" class="fl-row">
     {% if user.is_authenticated %}
         <section>
