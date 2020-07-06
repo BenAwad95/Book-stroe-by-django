@@ -21,6 +21,12 @@ html, body{
     justify-content: space-between;
 }
 
+@media (max-width:1000px){
+    body{
+        padding-top: 10vh;
+    }
+}
+
 main{
     margin: 0 0 auto 0 ;
 }
@@ -259,8 +265,9 @@ a{
     overflow: hidden;
 }
 
+
 #main-nav{
-    z-index: 100;
+    z-index: 1200;
     position: fixed;
     top: 0;
     left: 0;
@@ -278,6 +285,45 @@ a{
 #main-nav #cart{
     position: relative;
 }
+
+#cart #user-panel #user-control-container{
+    display: flex ;
+    align-items: center;
+}
+
+@media (max-width: 1200px){
+    #main-nav #cart #user-panel{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: transparent;
+        border: 1px solid #333;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    /* #main-nav #cart #user-panel:hover #user-control-container{
+        display: flex;
+    } */
+    
+    #main-nav #cart #user-panel #user-control-container{
+        position: absolute;
+        top: 60px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 200px;    
+        height: 150px;
+        background: #fff;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 2px #333 solid;
+        border-radius: 5px;
+    }
+    
+}
+
 
 #main-nav #cart #cart-icon{
     width: 50px;
@@ -309,6 +355,26 @@ a{
     ;
 }
 
+@media (max-width:1000px){
+    #main-nav #logo{
+        left: 10%;
+        transform: translate(-10%,-100%);
+    }
+
+    #main-nav {
+        padding-bottom: 4rem;
+        padding-right: 1rem;
+    }
+
+    #main-nav ul {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(-10%,80%);
+
+    }
+}
+
 /* footer section */
 
 #main-footer{
@@ -316,10 +382,27 @@ a{
     color: var(--light-color);
     display: grid;    
     grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr 0.5fr;
+}
+
+@media (max-width:1000px){
+    #main-footer {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .rights{
+        grid-row: 2/span 3;
+        grid-column: 1/ span 3;
+    }
 }
 
 #main-footer aside{
     padding: 0 5rem;
+}
+
+@media (max-width: 1200px){
+    #main-footer aside{
+        padding: 0 1rem;
+    }
 }
 
 #main-footer aside h4 {
