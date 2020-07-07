@@ -1,9 +1,9 @@
 
 <nav id="main-nav" class="fl-row p-3">
-<ul>
-    <li><a class= 'btn btn-dark' href="{% url 'store:store' %}">Store</a></li>
-    <li><a class= 'btn btn-dark' href="#">About Us</a></li>
-    <li><a class= 'btn btn-dark' href="#">Contact Us</a></li> 
+<ul class="fl-row-start">
+    <li><a class= 'current nav-link' href="{% url 'store:store' %}">Store</a></li>
+    <li><a class= 'nav-link' href="#">About Us</a></li>
+    <li><a class= 'nav-link' href="#">Contact Us</a></li> 
 </ul>
 <a href="{% url 'store:store' %}"><h1 class="p-1" id="logo">Books Store</h1></a>
 <div id="cart" class="fl-row">

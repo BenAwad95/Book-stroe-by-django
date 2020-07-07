@@ -277,10 +277,41 @@ a{
     justify-content: space-between;
 }
 
-#main-nav li{
-    display: inline-block;
+
+#main-nav .nav-link{
+    display: block;
+    margin: 0 0.5rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
 }
 
+#main-nav .nav-link:hover{
+    border-color: #fff;
+}
+
+#main-nav .nav-link.current{
+    border-color: #fff;
+}
+
+@media (max-width:1100px){
+    #main-nav ul {
+        position: absolute;
+        left: 2%;
+        bottom: 10%;
+    }
+}
+
+@media (max-width: 500px){
+    #main-nav .nav-link {
+        font-size: 1.1rem;
+    }
+    #main-nav ul {
+        position: absolute;
+        left: 2%;
+        bottom: 15%;
+    }
+}
 
 #main-nav #cart{
     position: relative;
@@ -324,8 +355,29 @@ a{
     
 }
 
+@media (max-width:500px){
+    #main-nav{
+        padding: 5rem;
+    }
+    #main-nav #cart {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    #main-nav #cart #user-panel{
+        margin-top: 1rem;
+    }
+    #main-nav #cart #user-panel #user-control-container{
+        right: -10px;
+        transform: translateX(0);
+    }
+}
 
 #main-nav #cart #cart-icon{
+    position: relative;
     width: 50px;
     margin: 0 1rem;
 }
@@ -355,23 +407,20 @@ a{
     ;
 }
 
-@media (max-width:1000px){
+@media (max-width:1100px){
     #main-nav #logo{
-        left: 10%;
-        transform: translate(-10%,-100%);
+        transform: translate(0,0);
+        top: 0;
+        left: 5%;
+        margin: 0.5rem 0 0 0;
+        font-size: 2rem;
     }
+}
 
-    #main-nav {
-        padding-bottom: 4rem;
-        padding-right: 1rem;
-    }
-
-    #main-nav ul {
-        position: absolute;
-        top: 50%;
-        left: 10%;
-        transform: translate(-10%,80%);
-
+@media (max-width:500px){
+    #main-nav #logo{
+        margin: 1rem 0 0 0;
+        font-size: 1.7rem;
     }
 }
 
@@ -426,7 +475,7 @@ a{
         var(--dark-color) 20%,
         var(--dark-color) 30%
       );
-    margin: 0 0.3rem;
+    margin:  0.3rem;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -434,4 +483,20 @@ a{
 .social-box:hover{
     transform: scale(1.1);
 }
+
+@media (max-width:600px){
+    #main-footer .social{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,1fr);
+        align-self: center;
+        justify-self: center;
+    }
+
+    #main-footer {
+        grid-template-columns: 1fr 0.5fr;
+        /* grid-template-columns: 1fr 0.5fr; */
+    }
+}
+
 
