@@ -4,6 +4,12 @@
     grid-gap: 1rem;
 }
 
+@media (max-width:750px){
+    .row{
+        grid-template-columns: 1fr;
+    }
+}
+
 .col:last-child{
     border: 1px solid #333;
     border-radius: 5px;

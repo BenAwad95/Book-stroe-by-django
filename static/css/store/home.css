@@ -109,10 +109,15 @@
     }
     .item-info .btn{
         margin: 0 0.2rem !important;
-        font-size: 1rem;
+        font-size: 0.7rem;
         padding: 0.7rem 0.4rem;
     }
     .item-box{
         width: fit-content;
+    }
+
+    .item-info .btn img{
+        width: 15px;
+        margin-left: 0.1rem;
     }
 }
