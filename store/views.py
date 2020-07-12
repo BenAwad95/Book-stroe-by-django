@@ -6,7 +6,10 @@ import json
 
 def store(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        try:
+            customer = request.user.customer
+        except:
+            customer = Customer.objects.create(user = request.user, name = request.user.first_name, email = request.user.email)
         order, created = Order.objects.get_or_create(customer=customer, complate = False)
     else:
         try:

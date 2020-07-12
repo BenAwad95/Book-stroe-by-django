@@ -1,29 +1,32 @@
 
-<nav id="main-nav" class="fl-row p-3">
+<nav id="main-nav" class="fl-row p-1">
 <ul class="fl-row-start">
     <li><a class= 'current nav-link' href="{% url 'store:store' %}">Store</a></li>
     <li><a class= 'nav-link' href="#">About Us</a></li>
     <li><a class= 'nav-link' href="#">Contact Us</a></li> 
 </ul>
-<a href="{% url 'store:store' %}"><h1 class="p-1" id="logo">Books Store</h1></a>
+<a href="{% url 'store:store' %}" class="my-1"><h1 class="p-1" id="logo">Books Store</h1></a>
 <div id="cart" class="fl-row">
     {% if user.is_authenticated %}
         <section id="user-panel">
             <div id="user-control-container" class='hidden'>
                 <strong  >Hello <i>{{user.first_name}}</i></strong>
-            <a href="/admin" class="btn btn-basic mx-1 ">
-             My Acount</a>
+                <div class="fl-col">
+                    <a href="/admin" class="mx-1 my-1">My Acount</a>
+                    <a href="{% url 'acounts:logout' %}" class="">Logout</a>
+                </div>
+                
             </div>
         </section>
     {% else %}
         <section id="user-panel">
             <div id="user-control-container" class='hidden'>
-                <a href="/admin" class="btn btn-basic">Login</a><span class="mx-1">Or</span><a href="/admin" class="btn btn-basic">Create Acount</a>
+                <a href="{% url 'acounts:login' %}" class="btn btn-basic">Login</a><span class="mx-1">Or</span><a href="/admin" class="btn btn-basic">Create Acount</a>
             </div>
         </section>
     {% endif %}
     {% load static %}
     <a href="{% url 'store:cart' %}"><img src="{% static 'media\cart.png' %}" alt="car-icon" id="cart-icon"></a>
-    <span id="cart-total" class="fl-row">{{order.get_items_cart}}</span>
+    <span id="cart-total" class="fl-row">{% if order.get_items_cart %}{{order.get_items_cart}}{%else%}0{% endif %}</span>
 </div>
 </nav>
