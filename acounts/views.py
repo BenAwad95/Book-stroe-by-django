@@ -55,3 +55,6 @@ def logoutUser(request):
     logout(request)
     messages.info(request, "You logout successfully")
     return redirect(reverse("acounts:login"))
+
+
+

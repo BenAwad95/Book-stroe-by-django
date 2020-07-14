@@ -1,3 +1,6 @@
+#checkout-container{
+    margin-top: 10vh;
+}
 .row{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -10,10 +13,38 @@
     }
 }
 
+
 .col:last-child{
     border: 1px solid #333;
     border-radius: 5px;
     height: fit-content;
+}
+
+
+
+#visitor-user-options{
+    margin-bottom: 2rem;
+
+}
+
+#visitor-user-options .btns-container{
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.btns-container a.btn{
+    margin: 0 1rem;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+}
+
+#visitor-user-options p {
+    font-size: 1.3rem;
+    color: #f1a112;
+}
+
+#user-info{
+    margin-bottom: 1rem;
 }
 
 form input[type='text'],form input[type='email']{
@@ -24,7 +55,7 @@ form input[type='text'],form input[type='email']{
 
 form input[type='submit']{
     display: block;
-    margin: auto;
+    margin: 1rem auto;
     width: 50%;
     font-size: 1.3rem;
 }

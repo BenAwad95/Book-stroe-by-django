@@ -14,6 +14,13 @@
         <div class="container p-1">
             <div class="row">
                 <div class="col">
+                        <div id="visitor-user-options" class="">
+                            <div class="btns-container  fl-row">
+                                <a href="{% url 'acounts:login' %}" class="btn btn-dark my-1">Login</a>
+                                <a href="{% url 'acounts:register' %}" class="btn btn-sec">Sign up</a>
+                            </div>
+                            <p class="center"><b>Or continue without sign up</b></p>
+                        </div>                    
                     <form action="" id="payment-form" order="{{ordere}}">
                         <fieldset id="user-info" class="p-1">
                             <legend class="p-0">Coustomer Information</legend>
@@ -22,7 +29,7 @@
                             <input   placeholder="email" type="email" name="email">
                            
                         </fieldset>
-                        <fieldset id="shipping-info" class="p-1 m-1">
+                        <fieldset id="shipping-info" class="p-1">
                             <legend class="p-0">Coustomer Address</legend>
                             
                             <input required type="text"  name="country" placeholder="Contry">

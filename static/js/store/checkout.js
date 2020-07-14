@@ -2,6 +2,8 @@ const formCheckout = document.getElementById("payment-form")
 
 const userInfo = document.getElementById("user-info")
 
+const visitorUserOptions  = document.getElementById('visitor-user-options')
+
 const shippingInfo = document.getElementById('shipping-info')
 
 const paymentWindow = document.getElementById("payment-window")
@@ -27,6 +29,7 @@ let order = {}
 
 if(isUserAuthenticated()){
     userInfo.classList.add('hidden')
+    visitorUserOptions.classList.add('hidden')
 }
 
 formCheckout.addEventListener("submit",(e)=>{

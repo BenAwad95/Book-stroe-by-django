@@ -1,5 +1,5 @@
 
-<nav id="main-nav" class="fl-row p-1">
+<nav id="main-nav" class="fl-row px-2">
 <ul class="fl-row-start">
     <li><a class= 'current nav-link' href="{% url 'store:store' %}">Store</a></li>
     <li><a class= 'nav-link' href="#">About Us</a></li>
@@ -12,8 +12,8 @@
             <div id="user-control-container" class='hidden'>
                 <strong  >Hello <i>{{user.first_name}}</i></strong>
                 <div class="fl-col">
-                    <a href="/admin" class="mx-1 my-1">My Acount</a>
-                    <a href="{% url 'acounts:logout' %}" class="">Logout</a>
+                    <a href="{% url 'store:customerAccount' user.customer.name %}" class="btn btn-dark my-1">My Acount</a>
+                    <a href="{% url 'acounts:logout' %}" class="btn btn-sec">Logout</a>
                 </div>
                 
             </div>
@@ -21,7 +21,10 @@
     {% else %}
         <section id="user-panel">
             <div id="user-control-container" class='hidden'>
-                <a href="{% url 'acounts:login' %}" class="btn btn-basic">Login</a><span class="mx-1">Or</span><a href="/admin" class="btn btn-basic">Create Acount</a>
+                 <div class="fl-col">
+                    <a href="{% url 'acounts:login' %}" class="btn btn-dark my-1">Login</a>
+                    <a href="{% url 'acounts:register' %}" class="btn btn-sec">Sign up</a>
+                </div>
             </div>
         </section>
     {% endif %}

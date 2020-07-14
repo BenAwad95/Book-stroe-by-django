@@ -320,6 +320,8 @@ a{
     top: 0;
     left: 0;
     width: 100%;
+    height: 10vh;
+    overflow: hidden;
     background: var(--main-color);
     font-size: 1.2rem;
     justify-content: space-between;
@@ -368,6 +370,15 @@ a{
 #cart #user-panel #user-control-container{
     display: flex ;
     align-items: center;
+}
+
+#user-control-container .btn {
+    padding: 0.2rem 0;
+    width: 100px;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0.2rem 0.5rem;
+    
 }
 
 @media (max-width: 1200px){
@@ -427,13 +438,21 @@ a{
 #main-nav #cart #cart-icon{
     position: relative;
     width: 50px;
-    margin: 0 1rem;
+    margin-left: 2rem;
+}
+
+@media (max-width: 650px){
+    #main-nav #cart #cart-icon{
+        margin-left: 0;
+        margin-right: 0.5rem;
+        
+    }
 }
 
 #main-nav #cart #cart-total{
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: 3px;
+    right: -13px;
     width: 27px;
     height: 27px;
     border-radius: 50%;
@@ -442,16 +461,23 @@ a{
     
 }
 
+@media (max-width:1200px){
+    #main-nav #cart #cart-total{
+        top: -5px;
+        right: -10px;
+    }
+}
+
 #main-nav #logo{
     text-transform: uppercase;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     border: 3px solid var(--light-color);
     border-radius: 25%;
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 10px 0 30px rgba(255, 255, 255, 0.3),-10px 0 30px rgba(255, 255, 255, 0.3);
     position:absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-75%);
+    transform: translate(-50%,-72%);
     ;
 }
 

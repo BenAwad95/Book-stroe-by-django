@@ -15,6 +15,8 @@ urlpatterns = [
     path('view/<str:bookname>/',bookDetail,name='bookDetail'),
     path('update-cart/', updateItem),
     path('process-order/', processOrder),
+    path('customer/<str:name>/',customerAccount, name= 'customerAccount'),
+
 ]
 
 

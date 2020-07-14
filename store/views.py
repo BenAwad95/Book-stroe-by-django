@@ -1,33 +1,14 @@
 from django.shortcuts import render
-from .models import *
-
 from django.http import JsonResponse
+
+from .models import *
+from .utils import *
+
 import json
 
 def store(request):
-    if request.user.is_authenticated:
-        try:
-            customer = request.user.customer
-        except:
-            customer = Customer.objects.create(user = request.user, name = request.user.first_name, email = request.user.email)
-        order, created = Order.objects.get_or_create(customer=customer, complate = False)
-    else:
-        try:
-            cart = json.loads(request.COOKIES['cart'])
-        except:
-            cart = {}
-        order = {
-            'get_total_cart':0,
-            'get_items_cart':0,
-            'complate':0
-        }
-        for productId in cart:
-            try:#this is for products that may delete from the db and stile reminded in the car cookie
-                product = Product.objects.get(pk = productId)
-                order['get_items_cart'] += cart[productId]['quantity']
-                order['get_total_cart'] += (cart[productId]['quantity'] * product.price)
-            except:
-                pass
+    cookieName = 'cart'
+    order = getOrder(request, cookieName)
     books = Product.objects.all()
     context = {
         'page_title': 'Home Page',
@@ -38,40 +19,8 @@ def store(request):
 
 
 def cart(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer = customer, complate = False)
-        items = order.orderitem_set.all()
-    else:
-        try:
-            cart = json.loads(request.COOKIES['cart'])
-        except:
-            cart = {}
-        order = {
-            'get_total_cart':0,
-            'get_items_cart':0,
-        }
-        items = []
-        for productId in cart:
-            try: 
-                product = Product.objects.get(pk = productId)
-                order['get_items_cart'] += cart[productId]['quantity']
-                order['get_total_cart'] += (cart[productId]['quantity'] * product.price)
-                item = {
-                    'product':{
-                        'id':product.id,
-                        'name':product.name,
-                        'price':product.price,
-                        'imageURL':product.imageURL,
-                    },
-                    'quantity': cart[productId]['quantity'],
-                    'get_total': (cart[productId]['quantity'] * product.price)
-                }
-                items.append(item)
-                # print(item)
-            except:
-                pass
-    # print(items)
+    order = getOrder(request, 'cart')
+    items = getItems(request, 'cart')
     context = {
         'page_title':'Cart',
         'order':order,
@@ -81,40 +30,8 @@ def cart(request):
 
 
 def checkout(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer = customer, complate = False)
-        items = order.orderitem_set.all()
-    else:
-        try:
-            cart = json.loads(request.COOKIES['cart'])
-        except:
-            cart = {}
-        order = {
-            'get_total_cart':0,
-            'get_items_cart':0,
-            'complate':0
-        }
-        items = []
-        for productId in cart:
-            try:
-                product = Product.objects.get(pk = productId)
-                order['get_items_cart'] += cart[productId]['quantity']
-                order['get_total_cart'] += (cart[productId]['quantity'] * product.price)
-                item = {
-                'product':{
-                    'id':product.id,
-                    'name':product.name,
-                    'price':product.price,
-                    'imageURL':product.imageURL,
-                },
-                'quantity': cart[productId]['quantity'],
-                'get_total': (cart[productId]['quantity'] * product.price)
-                }
-                items.append(item)
-            # print(item)
-            except:
-                pass
+    order = getOrder(request, 'cart')
+    items = getItems(request, 'cart')
     context = {
         'page_title':'Cart',
         'order':order,
@@ -209,3 +126,13 @@ def processOrder(request):
         )
         # print(order.orderitem_set.all())
     return JsonResponse('Payment has been successfully complete!\nThank you for shipping with us', safe= False)
+
+
+
+
+def customerAccount(request,name):
+    customer = Customer.objects.get(name=name)
+    context = {
+        'page_title':'Customer Account'
+    }
+    return render(request,'store/customerAccount.html',context)
