@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{page_title|title}}
+{% endblock title %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href={% static 'css\acounts\login.css' %}>
+{% endblock css %}
+
+{% block content %}
+{% comment %} <h1 style="font-size:4rem; margin-top:10%; color:#dda178; text-transform: capitalize;" class="center" >log in page</h1> {% endcomment %}
+<div class="container">
+    {% comment %} <form action="." method="post" id="login-form">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Log In">
+    </form> {% endcomment %}
+    <h1 class="heading-page my-2" >Login Users</h1>
+        {% for message in messages %}
+            <p class="{{message.tags}}-message" >{{message}}</p>
+        {% endfor %}
+        
+    <form action="" method="post" id="login-form">
+    {% csrf_token %}
+    <div class="grop-form">
+    <label for="username">Uesrname</label>
+    <input required type="text" name="username" id="username">
+    </div>
+    <div class="grop-form">
+    <label for="password">Password</label>
+    <input required type="password" name="password" id="password">
+    </div>
+    
+    <div class="grop-form">
+    <input type="submit" value="Log In">
+    </div>
+    <p class="center" >If you don't have an account sign up <a style="color:#5780f9;" href="{% url 'acounts:register' %}">here</a> </p>
+    </form>
+</div>
+{% endblock content %}

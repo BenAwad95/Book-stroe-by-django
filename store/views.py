@@ -114,7 +114,7 @@ def processOrder(request):
         name = data['userForm']['name']
         email = data['userForm']['email']
         # print(name,email)
-        customer, created = Customer.objects.get_or_create(email=email)
+        customer, created = Customer.objects.get_or_create(name = name, email=email)
         order = Order.objects.create(customer = customer, complate = False)
         for productId in cart:
             product = Product.objects.get(pk = productId)
@@ -128,10 +128,9 @@ def processOrder(request):
             street = shippingDetail['street'],
             zipCode = shippingDetail['zipCode'],
         )
+        order.complate = True
         # print(order.orderitem_set.all())
     return JsonResponse('Payment has been successfully complete!\nThank you for shipping with us', safe= False)
-
-
 
 def registerCheckout(request):
     form = CreateUserForm()
@@ -158,6 +157,39 @@ def registerCheckout(request):
 
     return render(request,'store/checkoutRegister.html',context)
 
+def loginCheckout(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+    
+        user = authenticate(request, username = username, password = password)
+
+        if user is not None:
+            login(request, user)
+            customer = user.customer
+            order, created = Order.objects.get_or_create(customer = customer, complate = False)
+            products = list(orderitem.product for orderitem in order.orderitem_set.all())
+            cartDate = json.loads(request.COOKIES['cart'])
+            for productId in cartDate:
+                product = Product.objects.get(id = productId)
+                if product in products:
+                    for item in order.orderitem_set.all():
+                        if item.product == product:
+                            item.quantity += (cartDate[productId]['quantity'])
+                            item.save()
+                else:
+                    OrderItem.objects.create(order = order, product = product,
+                quantity =(cartDate[productId]['quantity']) )
+            return redirect(reverse("store:checkout"))
+        else:
+            messages.error(request,'Username or password not vialed')
+
+    context = {
+        'page_title':'log in',
+    }
+
+
+    return render(request,'store/loginCheckout.html',context)
 
 def customerAccount(request,name):
     customer = Customer.objects.get(name=name)

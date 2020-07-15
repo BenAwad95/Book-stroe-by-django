@@ -12,7 +12,8 @@
 {% block content %}
     <section id="cart-container" class="p-1">
         <div class="container p-1">
-            <div class="row p-1">
+            {% if items %}
+            <section class="row p-1">
                 <a href="{% url 'store:store' %}" class="btn btn-basic">
                     <span class="arrow">
                         <div class="lineT"></div>
@@ -31,9 +32,9 @@
                         <a href="{% url 'store:checkout' %}" class="btn-sec btn">Checkout</a>
                     </div>
                 </div>
-            </div>
+            </section>
             <div class="row p-1 m-2">
-                <section class="grid-5">
+            <section class="grid-5">
                 <div class="col"></div>
                 <div class="col"><h4>Item</h4></div>
                 <div class="col"><h4>Price</h4></div>
@@ -60,6 +61,24 @@
                 {% endfor %}
            </section>
             </div>
+            {% else %}
+            <section class="row p-1">
+                <a href="{% url 'store:store' %}" class="btn btn-basic">
+                    <span class="arrow">
+                        <div class="lineT"></div>
+                        <div class="lineB"></div>
+                    </span>
+                    <span> Continue Shipping</span>
+                </a>
+                <br>
+                <br>
+                <hr>
+                <br>
+                <div class="cart-info fl-row">
+                    <h4 class='center'>Your cart is emity</h4>
+                </div>
+            </section>
+            {% endif %}
         </div>
     </section>
 {% endblock content %}

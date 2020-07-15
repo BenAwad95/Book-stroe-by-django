@@ -17,6 +17,7 @@ urlpatterns = [
     path('process-order/', processOrder),
     path('customer/<str:name>/',customerAccount, name= 'customerAccount'),
     path('register-checkout',registerCheckout, name='registerCheckout'),
+    path('login-checkout',loginCheckout, name='loginCheckout'),
 
 ]
 
