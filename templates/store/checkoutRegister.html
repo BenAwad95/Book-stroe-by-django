@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{page_title|title}}
+{% endblock title %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href={% static 'css\acounts\login.css' %}>
+{% endblock css %}
+
+{% block content %}
+{% comment %} <h1 style="font-size:4rem; margin-top:10%; color:#dda178; text-transform: capitalize;" class="center" >log in page</h1> {% endcomment %}
+<div class="container">
+    <h1 class="heading-page" >register new Users</h1>
+    {% comment %} <form action="." method="post" id="login-form">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Log In">
+    </form> {% endcomment %}
+    <form action="" method="post" id="login-form">
+    {% csrf_token %}
+        <div class="grop-form">
+            {{form.username.label|title}}
+            {{form.username}}
+        </div>
+        <div class="grop-form">
+            {{form.first_name.label|title}}
+            {{form.first_name}}
+        </div>
+        <div class="grop-form">
+            {{form.last_name.label|title}}
+            {{form.last_name}}
+        </div>
+        <div class="grop-form">
+            {{form.email.label|title}}
+            {{form.email}}
+        </div>
+        <div class="grop-form">
+            {{form.password1.label|title}}
+            {{form.password1}}
+        </div>
+        <div class="grop-form">
+            {{form.password2.label|title}}
+            {{form.password2}}
+        </div>
+
+        <div class="grop-form">
+            <input type="submit" value="Log In">
+        </div>
+        <p class="center" >If you have an account log In <a style="color:#5780f9;" href="{% url 'acounts:login' %}">here</a> </p>
+    </form>
+</div>
+{% endblock content %}

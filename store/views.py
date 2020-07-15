@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import JsonResponse
+
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 from .models import *
 from .utils import *
+from .forms import *
 
 import json
 
@@ -17,10 +22,10 @@ def store(request):
     }
     return render(request,'store\home.html',context)
 
-
 def cart(request):
-    order = getOrder(request, 'cart')
-    items = getItems(request, 'cart')
+    cookieName = 'cart'
+    order = getOrder(request, cookieName)
+    items = getItems(request, cookieName)
     context = {
         'page_title':'Cart',
         'order':order,
@@ -28,10 +33,10 @@ def cart(request):
     }
     return render(request,'store\cart.html',context)
 
-
 def checkout(request):
-    order = getOrder(request, 'cart')
-    items = getItems(request, 'cart')
+    cookieName = 'cart'
+    order = getOrder(request, cookieName)
+    items = getItems(request, cookieName)
     context = {
         'page_title':'Cart',
         'order':order,
@@ -92,7 +97,6 @@ def updateItem(request):
         orderitem.delete()
     return JsonResponse('I faced a big problem here', safe = False)
 
-
 def processOrder(request):
     data = json.loads(request.body)
     shippingDetail = data['shippingDetail']
@@ -128,6 +132,31 @@ def processOrder(request):
     return JsonResponse('Payment has been successfully complete!\nThank you for shipping with us', safe= False)
 
 
+
+def registerCheckout(request):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = User.objects.get(username = request.POST.get('username'))
+            login(request,authenticate(username=request.POST.get('username'),password=request.POST.get('password1')))
+            customer = Customer.objects.create(user = user, name = request.POST.get('first_name'), email = request.POST.get('email'))
+            order = Order.objects.create(customer = customer, complate = False)
+            cartDate = json.loads(request.COOKIES['cart'])
+            for productId in cartDate:
+                product = Product.objects.get(id = productId)
+                OrderItem.objects.create(order = order, product = product,
+                quantity =(cartDate[productId]['quantity']) )
+            # print(cartDate[productId]['quantity'])
+            # messages.success(request, 'Your account has been created successfully')
+            return redirect(reverse("store:checkout"))
+    context = {
+        'form':form,
+        'page_title':'Sing Up',
+    }
+
+    return render(request,'store/checkoutRegister.html',context)
 
 
 def customerAccount(request,name):
