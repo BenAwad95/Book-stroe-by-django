@@ -8,7 +8,21 @@
 {% endblock css %}
 
 {% block content %}
-<h1 class="heading">Customer Page</h1>
+<h1 class="heading center my-2">Customer Page</h1>
+<h2>Things may include inside acustomer page</h2>
+<ol class=" mx-2">
+    <li>{{order.id}}</li>
+    <li>{{order.customer.user}}</li>
+    <li>{{order.shippingaddress_set.all}}</li>
+    <li>{% for item in order.orderitem_set.all %}
+        <h3>{{item.product.name}}</h3>
+        <ul>
+            <li>{{item.product.price}}</li>
+            <li>{{item.quantity}}</li>
+        </ul>
+    {% endfor %}
+    </li>
+</ol>
 {% endblock content %}
 
 {% block js %}

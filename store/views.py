@@ -150,7 +150,10 @@ def registerCheckout(request):
             # print(cartDate[productId]['quantity'])
             # messages.success(request, 'Your account has been created successfully')
             return redirect(reverse("store:checkout"))
+    cookieName = 'cart'
+    order = getOrder(request, cookieName)
     context = {
+        'order': order,
         'form':form,
         'page_title':'Sing Up',
     }
@@ -183,17 +186,20 @@ def loginCheckout(request):
             return redirect(reverse("store:checkout"))
         else:
             messages.error(request,'Username or password not vialed')
-
+    cookieName = 'cart'
+    order = getOrder(request, cookieName)
     context = {
+        'order': order,
         'page_title':'log in',
     }
-
-
     return render(request,'store/loginCheckout.html',context)
 
 def customerAccount(request,name):
-    customer = Customer.objects.get(name=name)
+    customer = Customer.objects.get(user= request.user)
+    cookieName = 'cart'
+    order = getOrder(request, cookieName)
     context = {
+        'order': order,
         'page_title':'Customer Account'
     }
     return render(request,'store/customerAccount.html',context)

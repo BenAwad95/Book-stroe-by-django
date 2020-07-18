@@ -11,6 +11,9 @@
 
 {% block content %}
     <section id="store-container" class="p-1">
+        {% for message in messages %}
+            <p class="{{message.tags}}-message" >{{message}}</p>
+        {% endfor %}
         <h1 class="heading-page my-3">Store page</h1>
         <div class="container grid-3">
             {% for book in books %}
