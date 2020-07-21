@@ -48,12 +48,6 @@
 .cart-info h4:first-child{
     margin-right: 2rem;
 }
-
-.grid-5{
-    display: grid;
-    grid-template-columns: repeat(2,1fr) repeat(3,0.5fr);
-}
-
 @media(max-width:650px){
     .cart-info{
         padding: 0;
@@ -64,6 +58,13 @@
     }
 
 }
+
+.grid-5{
+    display: grid;
+    grid-template-columns: repeat(2,1fr) repeat(3,0.5fr);
+}
+
+
 
 
 .col {

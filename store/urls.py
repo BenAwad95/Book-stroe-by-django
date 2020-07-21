@@ -16,6 +16,7 @@ urlpatterns = [
     path('update-cart/', updateItem),
     path('process-order/', processOrder),
     path('customer/<str:name>/',customerAccount, name= 'customerAccount'),
+    path('customer/<str:name>/<int:orderId>/',orderDetail, name= 'orderDetail'),
     path('register-checkout',registerCheckout, name='registerCheckout'),
     path('login-checkout',loginCheckout, name='loginCheckout'),
 

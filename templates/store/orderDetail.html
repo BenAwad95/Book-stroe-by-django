@@ -1,31 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}
-{{page_title|title}}
-{% endblock title %}
-
 {% block css %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css\store\account.css' %}">
 {% endblock css %}
 
+{% block title %}
+{{page_title|title}}
+{% endblock title %}
+
 {% block content %}
-<h1 class="heading center my-2">Customer Page</h1>
-<div class="container">
-    {% for ord in user.customer.order_set.all %}
+
+<div class="container" style="margin-top:5%;">
     <section class="order-box p-1 m-1">
     <header class="p-1">
         <div class="order-no mx-1">
-            <h4>Order No. {{ord.id}} {% if ord.complate %}<small class="success-message" >Shipped</small> {% else %} <small class="info-message" >Not Shipped</small> {% endif %}</h4>
+            <h4>Order No. {{order.id}} {% if order.complate %}<small class="success-message" >Shipped</small> {% else %} <small class="info-message" >Not Shipped</small> {% endif %}</h4>
         </div>
         <div class="v-line"></div>
         <div class="order-total mx-1">
-            <p><strong>Total:</strong><small>${{ord.get_total_cart}}</small></p>
-            <p><strong>Items:</strong><small>{{ord.get_items_cart}}X</small></p>
+            <p><strong>Total:</strong><small>${{order.get_total_cart}}</small></p>
+            <p><strong>Items:</strong><small>{{order.get_items_cart}}X</small></p>
         </div>
         <div class="v-line"></div>
         <div class="order-shipping-address">
-            {% for address in ord.shippingaddress_set.all %} 
+            {% for address in order.shippingaddress_set.all %} 
             <p><small>{{address.country}}</small></p>
             <p><small>{{address.city}}</small></p>
             <p><small>{{address.street}}</small></p>
@@ -34,7 +33,7 @@
         </div>
         <div class="controls fl-col">
         <a href="#" class="btn btn-sec">Bay Again</a>
-        <a href="{% url 'store:orderDetail'  user.first_name ord.id %}" class="btn btn-dark">View Order</a>
+        <a href="#" class="btn btn-dark">View Order</a>
         </div>
     </header>
     <hr>
@@ -42,8 +41,8 @@
         <h5>Some from order's Items</h5>
         <div id="order-detail">
             <div class="grid-5">
-                {% for item in ord.brief_order %}
-
+                {% for item in order.items_order %}
+                
                 <div class="col center" style="display:block;">
                     <img class="p-1" src="{{item.product.imageURL}}" alt="product-img">
                 </div>
@@ -71,7 +70,6 @@
     {% endfor %}
     </ol> {% endcomment %}
     </section>
-    {% endfor %}
     
 
     
@@ -79,5 +77,4 @@
 {% endblock content %}
 
 {% block js %}
-
 {% endblock js %}

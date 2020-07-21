@@ -129,6 +129,7 @@ def processOrder(request):
             zipCode = shippingDetail['zipCode'],
         )
         order.complate = True
+        order.save()
         # print(order.orderitem_set.all())
     return JsonResponse('Payment has been successfully complete!\nThank you for shipping with us', safe= False)
 
@@ -203,3 +204,11 @@ def customerAccount(request,name):
         'page_title':'Customer Account'
     }
     return render(request,'store/customerAccount.html',context)
+
+def orderDetail(request,name, orderId):
+    order = Order.objects.get(id = orderId)
+    context = {
+        'order': order,
+        'page_title':'order detail'
+    }
+    return render(request,'store/orderDetail.html',context)

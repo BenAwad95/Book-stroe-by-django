@@ -49,6 +49,12 @@ class Order(models.Model):
     
     def get_items_cart(self):
         return sum(item.quantity for item in self.orderitem_set.all())
+    def brief_order(self):
+        items = self.orderitem_set.all()[:2]
+        return items
+    def items_order(self):
+        items = self.orderitem_set.all()
+        return items
 
 
 class OrderItem(models.Model):
